@@ -6,7 +6,7 @@ import Quotes from "../utils/API";
 const QuotePage = () => {
   const [result, setResult] = useState([]);
 
-  const newQuote = () => {
+  const newQuote = () => 
     Quotes.search()
       .then(res => setResult(res.data))
       .catch(err => console.log(err));
@@ -14,6 +14,13 @@ const QuotePage = () => {
       useEffect(() => {
         newQuote();
       }, []);
+
+      const handleNewQuote = () => {
+        newQuote();
+      };
+
+      const { quote, author } = result;
+
   
   // const imageslandscape = ['/images/kalalaubeachkaui.jpg', '/images/mesaarch.jpg', '/images/montrotuiridge.jpg', 
   // '/images/mtsuperiorfall.jpg', '/images/priestlakenorthernlights.jpg', '/images/reflectioncanyon.jpg',
@@ -54,6 +61,6 @@ const QuotePage = () => {
         </div>
       </div>
   );
-}
+};
 
 export default QuotePage;
