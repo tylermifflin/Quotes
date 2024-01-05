@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Quotes from "../utils/API";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 
@@ -42,19 +43,18 @@ const QuotePage = () => {
 
   return (
 
-    <div className="quotepage">
+    <div>
         <div className="row">
           <div className="col-md-12">
             <div className="quote-container">
               <div className="quote-text">
-                <i className="fa fa-quote-left"></i><span id="quote">{apiData.quote}</span>
+                <i className="fa fa-quote-left"></i><span id="quote">{quote}</span>
               </div>
               <div className="quote-author">
-                <span id="author">{apiData.author}</span>
+                <span id="author">{author}</span>
               </div>
               <div className="buttons">
                 <button className="btn btn-primary" id="new-quote" onClick={handleNewQuote}>New Quote</button>
-                <button className="btn btn-primary" id="new-background-image" onClick={handleNewBackgroundImage}>New Background Image</button>
               </div>
             </div>
           </div>
