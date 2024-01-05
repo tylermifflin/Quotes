@@ -1,26 +1,35 @@
 import React, { useState, useEffect } from "react";
-import Quotes from "../utils/API";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
 
 const QuotePage = () => {
-  const [result, setResult] = useState([]);
+  const [quote, setQuote] = useState("");
+  const [author, setAuthor] = useState("");
 
-  const newQuote = () => 
-    Quotes.search()
-      .then(res => setResult(res.data))
-      .catch(err => console.log(err));
 
-      useEffect(() => {
-        newQuote();
-      }, []);
+  const fetchQuote = async () => {
+    try {
+        const response = await axios.get("https://zenquotes.io/api/quotes/");
+        const data = await response.data;
+        const firstQuote = data[0];
+        setQuote(firstQuote.q);
+        setAuthor(firstQuote.a);
+    } catch (error) {
+        console.error(error);
+    }
+    };
+
+    useEffect(() => {
+        fetchQuote();
+      }
+      , []);
 
       const handleNewQuote = () => {
-        newQuote();
+        fetchQuote();
       };
 
-      const { quote, author } = result;
 
   
   // const imageslandscape = ['/images/kalalaubeachkaui.jpg', '/images/mesaarch.jpg', '/images/montrotuiridge.jpg', 
