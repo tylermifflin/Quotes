@@ -1,8 +1,8 @@
 import React from 'react';
-import ApiTest from './components/WorkoutComponent';
+import QuotePage from './components/quotes.js';
 
 function App() {
-  return <ApiTest />;
+  return <QuotePage />;
 }
 
 export default App;
